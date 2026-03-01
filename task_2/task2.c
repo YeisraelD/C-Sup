@@ -2,7 +2,7 @@
 
 int main(){
     int integer = 5;
-    float floatvar = 5.0;
+    float floatvar = 3.14;
     char string[] = "hello u";
 
     printf("%d is integer\n", integer);
