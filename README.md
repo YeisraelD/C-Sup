@@ -1,3 +1,4 @@
+```terminal_session
  ________________________________________
 / "The C Programming Language -- A        \
 | language which combines the flexibility |
@@ -13,4 +14,5 @@
                 ||     ||
 
                  Moofasa
+```
 
