@@ -11,5 +11,4 @@ int main(){
 
     printf("the area of ur circle is:%2.f ", area);
     
-
 }
