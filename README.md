@@ -1,1 +1,16 @@
-<img width="959" height="412" alt="image" src="https://github.com/user-attachments/assets/e01a651c-c10d-427d-ae91-b1b2e94151ec" />
+ ________________________________________
+/ "The C Programming Language -- A        \
+| language which combines the flexibility |
+| of assembly language with the power of  |
+\ assembly language."                     /
+ -----------------------------------------
+       \    ____
+        \  /    \
+          | ^__^ |
+          | (oo) |______
+          | (__) |      )\/\
+           \____/|----w |
+                ||     ||
+
+                 Moofasa
+
