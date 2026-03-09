@@ -18,3 +18,17 @@ void producer(void){
 
     }
 }
+
+void consumer(void){
+    int item;
+
+    while (true){
+        down(&full); // wait for an item
+        down(&mutex); // enter cs
+        item = remove_item();
+        up(&mutex);  // leave cs
+        up(&empty); // increase empty slot
+        conusme_item(item); // use the data
+
+    }
+}
