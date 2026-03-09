@@ -47,3 +47,5 @@ kinda both lost
 but most os`s just ignore this condition.
 
 not sure with what mechanism we fix this ....
+
+okay, the reason i put this in c repo is that unlike other high level pls, c doesnt support built in monitor support, instead the programmer must use other synchronization mechanisims, like semaphores, mutex locks , ya that was basically it.
