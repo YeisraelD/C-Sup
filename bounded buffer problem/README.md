@@ -9,3 +9,6 @@ producer calls wakeup(consumer)
 but consumer wasnt asleep yet
 wakeup is lost -> consumer sleeps forever, lucky right
 ```
+in modern os instead of sleep()/ wakeup() we use mutex , semaphores, and condition variables, this guarante atomic operations.
+
+so synchronization primitives prevent these race conditions
