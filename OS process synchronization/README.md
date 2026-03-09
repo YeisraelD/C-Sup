@@ -12,3 +12,29 @@ wakeup is lost -> consumer sleeps forever, lucky right
 in modern os instead of sleep()/ wakeup() we use mutex , semaphores, and condition variables, this guarante atomic operations.
 
 so synchronization primitives prevent these race conditions
+
+but, even also on the semaphore solution there is an other problem.
+
+"deadlock"
+init
+```terminal_session
+mutex	1	critical section free
+empty	0	no empty slots
+full	N	buffer full
+```
+
+producer runs
+``terminal_session
+down(mutex)
+down(empty)
+```
+
+Producer enters critical section. then producer blocks (sleeps) waiting for an empty slot. Producer is still holding the mutex lock.
+
+consumer runs
+``terminal_session
+down(mutex)
+```
+
+Consumer cannot get mutex.
+Producer cannot release mutex because it is blocked.
