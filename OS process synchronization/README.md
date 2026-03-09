@@ -24,7 +24,8 @@ full	N	buffer full
 ```
 
 producer runs
-``terminal_session
+
+```terminal_session
 down(mutex)
 down(empty)
 ```
@@ -32,9 +33,13 @@ down(empty)
 Producer enters critical section. then producer blocks (sleeps) waiting for an empty slot. Producer is still holding the mutex lock.
 
 consumer runs
-``terminal_session
+```terminal_session
 down(mutex)
 ```
 
 Consumer cannot get mutex.
 Producer cannot release mutex because it is blocked.
+
+kinda both lost
+but most os`s just ignore this condition.
+not sure with what mechanism we fix this ....
