@@ -11,7 +11,7 @@ wakeup is lost -> consumer sleeps forever, lucky right
 ```
 in modern os instead of sleep()/ wakeup() we use mutex , semaphores, and condition variables, this guarante atomic operations.
 
-(https://github.com/YeisraelD/C-Sup/blob/main/OS%20process%20synchronization/prodConsProb_semaphores.c)
+[producer consumer problem solution with semaphores](https://github.com/YeisraelD/C-Sup/blob/main/OS%20process%20synchronization/prodConsProb_semaphores.c)
 
 so synchronization primitives prevent these race conditions
 
