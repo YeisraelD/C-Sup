@@ -42,7 +42,6 @@ down(mutex)
 Consumer cannot get mutex.
 
 Producer cannot release mutex because it is blocked.
-
 kinda both lost
 but most os`s just ignore this condition.
 
