@@ -41,8 +41,8 @@ down(mutex)
 
 Consumer cannot get mutex. its alreaddy set to 0, it can never unlock the critical section. 
 Producer cannot release mutex because it is blocked or its waiting for an empty slot in the buffer. 
-kinda both lost, but most os`s just ignore this condition.
+kinda both lost, but most modern os`s just ignore this condition.
 
 not sure with what mechanism we fix this ....
 
-okay, the reason i put this in c repo is that unlike other high level pls, c doesnt support built in monitor support, instead the programmer must use other synchronization mechanisims, like semaphores, mutex locks , ya that was basically it.
+okay, the reason i put this in c repo is that unlike other high level pls, c doesnt support built in monitor support, instead the programmer must use other synchronization mechanisims, like semaphores, mutex locks, so that was basically it.
