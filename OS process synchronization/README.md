@@ -39,11 +39,9 @@ consumer tries to runs
 down(mutex)
 ```
 
-Consumer cannot get mutex. its alreaddy set to 0, it can never unlock the critical section
-
-- Producer cannot release mutex because it is blocked.
-- kinda both lost
-- but most os`s just ignore this condition.
+Consumer cannot get mutex. its alreaddy set to 0, it can never unlock the critical section. 
+Producer cannot release mutex because it is blocked or its waiting for an empty slot in the buffer. 
+kinda both lost, but most os`s just ignore this condition.
 
 not sure with what mechanism we fix this ....
 
