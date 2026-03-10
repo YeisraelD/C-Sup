@@ -47,4 +47,4 @@ not sure with what mechanism we fix this ....
 
 okay, the reason i put this in c repo is that unlike other high level pls, c doesnt support built in monitor support, instead the programmer must use other synchronization mechanisims, like semaphores, mutex locks, so that was basically it.
 
-and i think that by not having build in monitors in C and also C++ allow us to use the specific concurrency model that fit the performance requirements for the problem we working on. since every problem aint best solved by a monitor.
+and i think that by not having build in monitors in C and also C++ make the programmer able to max efficiency by avoding runtime overheading, and allow us to use the specific concurrency model that fit the performance requirements for the problem we working on. since every problem aint best solved by a monitor.
