@@ -34,7 +34,7 @@ down(empty)
 
 Producer enters critical section. then producer blocks (sleeps) waiting for an empty slot. Producer is still holding the mutex lock.
 
-consumer runs
+consumer tries to runs
 ```terminal_session
 down(mutex)
 ```
