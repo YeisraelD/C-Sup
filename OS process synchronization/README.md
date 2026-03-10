@@ -41,10 +41,9 @@ down(mutex)
 
 Consumer cannot get mutex. its alreaddy set to 0, it can never unlock the critical section
 
-Producer cannot release mutex because it is blocked.
-
-kinda both lost
-but most os`s just ignore this condition.
+- Producer cannot release mutex because it is blocked.
+- kinda both lost
+- but most os`s just ignore this condition.
 
 not sure with what mechanism we fix this ....
 
