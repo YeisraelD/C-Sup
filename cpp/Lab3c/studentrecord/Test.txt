@@ -1,0 +1,5 @@
+ ----  student record ----
+student ID   student name     Grade
+55            yop             55
+77            yop             66
+67            pop             55

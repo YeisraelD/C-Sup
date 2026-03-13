@@ -1,0 +1,4 @@
+Employee ID      Sex(M/F)   Hourly-Wage Years-with-the-Company
+1              m              6              7
+3              m              5              6
+7              m              5              6
