@@ -1,0 +1,8 @@
+----  Employee record ----
+Name           Rate      Hours     Regular Pay    Overtime Pay   Gross Pay      
+yop            5         56        200            120            320            
+top            6         40        240            0              240            
+rpo            6         34        204            0              204            
+top            4         55        160            90             250            
+
+Total                         804            210            1014           

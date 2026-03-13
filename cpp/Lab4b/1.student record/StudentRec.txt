@@ -1,0 +1,4 @@
+ ----  student record ----
+student ID   student name     Grade
+66             yo             66
+55            ypo             44
