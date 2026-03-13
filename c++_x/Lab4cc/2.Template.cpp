@@ -11,6 +11,9 @@ int main()
    cout << floatPointDivide(a, b)<< endl;
    float x= 2.2;
    int y = 3;
-   cout << floatPointDivide(x,y);
+   cout << floatPointDivide(x,y) << endl;
+   // The following line will cause a compilation error because the function template is not defined for string types
+   // string str1 = "Hello";
+    // string str2 = "World";
    return 0;
 }
