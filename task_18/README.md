@@ -19,3 +19,14 @@ If you print with:
 the data must end with '\0'.
 
 Otherwise, wil print undefined behavior
+
+first file
+```terminal_session
+IEngine-Pid-bfipwukh.s44 --dbgExe=C:\msys64\ucrt64\bin\gdb.exe --interpreter=mi "
+Hello, World!��_
+```
+
+second
+```terminal_session
+Hello, World!
+```
