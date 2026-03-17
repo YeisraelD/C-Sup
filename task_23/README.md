@@ -6,3 +6,11 @@ Finally, assign values to the integer member of your original struct in three wa
 assign a value by using standard dot-notation for your instance and then print the value
 assign a value by using standard dot-notation for the pointer initialized to the instance and then print the value
 assign a value by using the -> indirect membership operator between the pointer name and the structure member and then print the value
+
+output
+```terminal_session
+preter=mi "
+5
+6
+7
+```
