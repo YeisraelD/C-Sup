@@ -68,32 +68,3 @@ Analysis:
 
 So if this shared library is loaded, the binary will change the message "Hello world!" to "Goodbye, cruel world!".
 
-## Assignment Details
-Your assignment is to hook the `write()` syscall and replace "Hello, World!" in write buffers with "Goodbye, cruel world!".
-
-I already know how to use `write()`. I know how to hook `puts()`. The concepts and library structure will be very similar.
-
-To compile your shared library:
-```terminal_session
-$ gcc -ldl task27.c -fPIC -shared -D_GNU_SOURCE -o task27.so
-```
-
-To test your malicious library:
-1. Compile it as a shared library.
-2. Create and compile a program (`test_write.c`) which uses `write()` to write "Hello, World!" to stdout.
-3. Run the program with `LD_PRELOAD`.
-
-### Example Output
-
-Without hook:
-```terminal_session
-$ ./test_write
-Hello, World!
-```
-
-With hook:
-```terminal_session
-$ export LD_PRELOAD=./task27.so
-$ ./test_write
-Goodbye, cruel world!
-```
