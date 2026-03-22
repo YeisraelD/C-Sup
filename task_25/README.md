@@ -54,10 +54,10 @@ int main (void)
 If we run this, we see that our write operation succeeded!
 
 ```terminal_session
-tokyo:~/LearningC/ # gcc task25.c -o task25
-tokyo:~/LearningC/ # ./task25
+$ gcc task25.c -o task25
+$ ./task25
 The open operation succeeded!
-tokyo:~/LearningC/ # cat testfile.txt
+
 Writing test data to the file.
 ```
 
@@ -109,9 +109,9 @@ int main (void)
 Running the program indicates success with both operations:
 
 ```terminal_session
-tokyo:~/LearningC/ # ./task25
+# ./task25
 The open operation succeeded!
 The write operation succeeded!
-tokyo:~/LearningC/ # cat testfile.txt
+# cat testfile.txt
 Writing test data to the file.
 ```
