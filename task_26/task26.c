@@ -6,8 +6,7 @@
 
 /**
  * Task 26: TCP Bind Shell
- *
- * This program creates a listening socket on port 5555.
+ *creates a listening socket on port 5555.
  * When a client connects, it redirects stdin, stdout, and stderr
  * to the client socket and spawns a shell (/bin/sh).
  */
