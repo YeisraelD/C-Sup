@@ -1,3 +1,0 @@
-First name     Last name      Account number     Current Balance
-yo             po          10006               66
-to             po          10007               77
