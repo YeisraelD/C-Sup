@@ -1,7 +1,7 @@
 #define _GNU_SOURCE
 #include <stdio.h>
-#include <sys/syscall.h>
-#include <unistd.h>
+// #include <sys/syscall.h>
+// #include <unistd.h>
 
 int main(void) {
   const char *msg1 = "1. High-level: printf() called.\n";
