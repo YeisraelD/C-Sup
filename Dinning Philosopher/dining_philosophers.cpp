@@ -1,23 +1,18 @@
-// --- CORE SYSTEM & CONCURRENCY LIBRARIES ---
-#include <chrono>             // High-precision time utilities (used for thread sleep durations).
-#include <condition_variable> // Allows threads to block (sleep) efficiently without wasting CPU cycles.
-#include <iostream>           // Standard I/O stream. Used for console logging (cout) and input (cin).
-#include <memory>             // Smart pointers (unique_ptr) for safe, leak-free heap memory management.
-#include <mutex>              // Mutual exclusion primitives (mutex, unique_lock) to prevent data races.
-#include <thread>             // C++ standard API for spawning and managing native OS worker threads.
-#include <vector>             // Dynamic array container used for managing our thread pool and states.
+#include <chrono>
+#include <condition_variable>
+#include <iostream>
+#include <memory>
+#include <mutex>
+#include <thread>
+#include <vector>
 
-using namespace std; // Pulls all standard library components into the global scope for cleaner syntax.
+using namespace std;
 
-// State machine definitions for thread lifecycle.
-// A node (philosopher) asserts HUNGRY before attempting to acquire the dual-resource locks (forks).
-// Transition to EATING is strictly guarded by evaluating adjacent node states.
-// 'enum class' is a strongly-typed, scoped enumeration (C++11 syntax).
-// Unlike regular enums, it prevents accidental implicit conversions to integers, ensuring type safety.
 enum class State { THINKING, HUNGRY, EATING };
 
-// Monitor object: encapsulates synchronization primitives to enforce thread-safe state mutations.
-// Eliminates race conditions and prevents circular wait deadlocks via strict resource ordering logic.
+// Monitor object: encapsulates synchronization primitives to enforce
+// thread-safe state mutations. Eliminates race conditions and prevents circular
+// wait deadlocks via strict resource ordering logic.
 class DiningTable {
 private:
   int N; // Total concurrency limit (node count)
@@ -36,17 +31,18 @@ private:
   int left(int i) { return (i + N - 1) % N; }
   int right(int i) { return (i + 1) % N; }
 
-  // The core invariant check. Validates if the current thread can safely acquire resources.
-  // Must ONLY be called when 'table_mutex' is held.
+  // The core invariant check. Validates if the current thread can safely
+  // acquire resources. Must ONLY be called when 'table_mutex' is held.
   void test(int i) {
-    // Assert: Thread is HUNGRY. Left and Right neighbors are NOT holding the locks (EATING).
+    // Assert: Thread is HUNGRY. Left and Right neighbors are NOT holding the
+    // locks (EATING).
     if (states[i] == State::HUNGRY && states[left(i)] != State::EATING &&
         states[right(i)] != State::EATING) {
 
       // Atomic state transition. Resources acquired.
       states[i] = State::EATING;
       cout << "[SIM] Philosopher " << i + 1 << " is now EATING.\n";
-      
+
       // Wake up the specific thread if it was parked in the CV wait queue.
       // notify_one() is sufficient here as each CV maps exactly to one thread.
       conds[i]->notify_one();
@@ -73,7 +69,7 @@ public:
     test(i);
 
     // Spurious wakeup loop. If we didn't get the lock, park the thread.
-    // The CV releases 'table_mutex' atomically and puts the thread to sleep, 
+    // The CV releases 'table_mutex' atomically and puts the thread to sleep,
     // re-acquiring it upon wakeup.
     while (states[i] != State::EATING) {
       conds[i]->wait(lock);
@@ -84,13 +80,14 @@ public:
   void putdown_forks(int i) {
     // RAII lock guard for state mutation.
     unique_lock<mutex> lock(table_mutex);
-    
+
     // Release resources.
     states[i] = State::THINKING;
     cout << "[SIM] Philosopher " << i + 1 << " returned to THINKING.\n";
 
-    // Broadcast availability to adjacent nodes. 
-    // If they were blocked waiting for our resources, this triggers their wakeup sequence.
+    // Broadcast availability to adjacent nodes.
+    // If they were blocked waiting for our resources, this triggers their
+    // wakeup sequence.
     test(left(i));
     test(right(i));
   }
@@ -99,10 +96,12 @@ public:
 // Thread payload. Simulates the infinite CPU/IO cycles of the node.
 void philosopher_routine(int id, DiningTable &table) {
   while (true) {
-    this_thread::sleep_for(chrono::seconds(1)); // Simulated IO bound task (THINKING)
-    table.pickup_forks(id);                     // Blocking resource request
-    this_thread::sleep_for(chrono::seconds(1)); // Simulated CPU bound task (EATING)
-    table.putdown_forks(id);                    // Resource deallocation
+    this_thread::sleep_for(
+        chrono::seconds(1)); // Simulated IO bound task (THINKING)
+    table.pickup_forks(id);  // Blocking resource request
+    this_thread::sleep_for(
+        chrono::seconds(1)); // Simulated CPU bound task (EATING)
+    table.putdown_forks(id); // Resource deallocation
   }
 }
 
@@ -121,7 +120,7 @@ int main() {
 
   // Instantiate the Monitor object on the stack.
   DiningTable table(num_philosophers);
-  
+
   // Thread pool allocation.
   vector<thread> philosophers;
 
@@ -133,10 +132,6 @@ int main() {
     philosophers.emplace_back(philosopher_routine, i, ref(table));
   }
 
-  // Block main thread indefinitely. Wait for worker threads to yield (they won't).
-  // Range-based for loop (C++11 syntax). 
-  // 'auto &' automatically deduces the type as a reference to a thread, avoiding unnecessary copying.
-  // t.join() blocks the main thread, waiting for the worker threads to yield (which they won't).
   for (auto &t : philosophers) {
     t.join();
   }
