@@ -4,26 +4,22 @@ int count = 0;
 
 void producer(void){
     int item;
-
     while (TRUE){
-        item = producer_item();  // generate the item, whatever kind of data it is
-        if(count == N) sleep() // buffer is full so sleep
-        insert_item(item);    //add item
-        count = count + 1; // item count up
-        if (count == 1 ) wakeup(consumer); // buffer was empty , so notify consumer
-
+        item = producer_item();
+        if(count == N) sleep()
+        insert_item(item);
+        count = count + 1;
+        if (count == 1 ) wakeup(consumer);
     }
 }
 
 void consumer(void){
     int item;
-
     while (TRUE){
-        if(count == 0) sleep(); //go bed there is nothing to take
+        if(count == 0) sleep();
         item = remove_item();
-        count = count -1 ;// count one down
+        count = count -1 ;
         if(count == N-1) wakeup(producer);
         consumer_item(item);
-
     }
 }
